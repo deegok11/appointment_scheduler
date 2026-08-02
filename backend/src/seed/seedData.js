@@ -1,0 +1,50 @@
+module.exports = {
+  doctors: [
+    {
+      username: 'dr.amit',
+      password: 'doctor123',
+      name: 'Dr. Amit Verma',
+      mobile_number: '9876543210',
+      email: 'amit.verma@clinic.example',
+      clinic_name: 'Verma Family Clinic',
+      clinic_address: '12 MG Road, Pune',
+      clinic_metadata: { specialization: 'General Physician' },
+    },
+    {
+      username: 'dr.sneha',
+      password: 'doctor123',
+      name: 'Dr. Sneha Rao',
+      mobile_number: '9876543211',
+      email: 'sneha.rao@clinic.example',
+      clinic_name: 'Rao Dental Care',
+      clinic_address: '45 Park Street, Pune',
+      clinic_metadata: { specialization: 'Dentist' },
+    },
+    {
+      username: 'dr.kiran',
+      password: 'doctor123',
+      name: 'Dr. Kiran Shah',
+      mobile_number: '9876543212',
+      email: 'kiran.shah@clinic.example',
+      clinic_name: 'Shah Eye Hospital',
+      clinic_address: '78 Station Road, Pune',
+      clinic_metadata: { specialization: 'Ophthalmologist' },
+    },
+  ],
+  patients: [
+    {
+      username: 'patient.ravi',
+      password: 'patient123',
+      name: 'Ravi Kumar',
+      mobile_number: '9123456780',
+      email: 'ravi.kumar@example.com',
+    },
+    {
+      username: 'patient.meera',
+      password: 'patient123',
+      name: 'Meera Nair',
+      mobile_number: '9123456781',
+      email: 'meera.nair@example.com',
+    },
+  ],
+};

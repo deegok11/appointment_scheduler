@@ -1,0 +1,410 @@
+:root {
+  --text: #4b5563;
+  --text-h: #111827;
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --danger: #dc2626;
+  --user-bubble: #2563eb;
+  --user-bubble-text: #ffffff;
+  --assistant-bubble: #f1f5f9;
+  --assistant-bubble-text: #111827;
+
+  font: 16px/1.5 system-ui, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #111827;
+    --surface: #1f2937;
+    --border: #374151;
+    --accent: #3b82f6;
+    --accent-hover: #60a5fa;
+    --assistant-bubble: #374151;
+    --assistant-bubble-text: #f3f4f6;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 24px;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* Login page */
+.login-page {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+}
+
+.login-form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-h);
+}
+
+.login-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.login-form button,
+.chat-header button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-form button:hover,
+.chat-header button:hover {
+  background: var(--accent-hover);
+}
+
+.login-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-error {
+  color: var(--danger);
+  font-size: 13px;
+  margin: 0;
+}
+
+.guest-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text);
+  text-decoration: underline;
+}
+
+.guest-link:hover {
+  color: var(--accent);
+}
+
+.login-link {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  background: var(--accent-hover);
+}
+
+/* Chat page */
+.chat-page {
+  height: 100vh;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.message-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 4px;
+}
+
+.message {
+  display: flex;
+  max-width: 75%;
+}
+
+.message-user {
+  align-self: flex-end;
+}
+
+.message-assistant {
+  align-self: flex-start;
+}
+
+.message-text {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.message-user .message-text {
+  background: var(--user-bubble);
+  color: var(--user-bubble-text);
+}
+
+.message-assistant .message-text {
+  background: var(--assistant-bubble);
+  color: var(--assistant-bubble-text);
+}
+
+.message-pending .message-text {
+  opacity: 0.6;
+}
+
+.message-error {
+  align-self: flex-start;
+}
+
+.message-error .message-text {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .message-error .message-text {
+    background: #7f1d1d;
+    color: #fecaca;
+  }
+}
+
+.message-input {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.message-input button {
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.message-input button:hover {
+  background: var(--accent-hover);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Doctor schedule page */
+.doctor-controls {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  flex-wrap: wrap;
+}
+
+.doctor-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-h);
+}
+
+.doctor-controls input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  font-size: 14px;
+}
+
+.doctor-controls button {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doctor-controls button:hover {
+  background: var(--accent-hover);
+}
+
+.doctor-controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.doctor-error {
+  margin: 16px 24px 0;
+}
+
+.empty-state {
+  margin: 24px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.appointment-list {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appointment-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 2fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 14px;
+}
+
+.appointment-time {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.appointment-contact {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.appointment-status {
+  justify-self: start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.appointment-booked .appointment-status {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.appointment-cancelled .appointment-status {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  .appointment-booked .appointment-status {
+    background: #14532d;
+    color: #bbf7d0;
+  }
+
+  .appointment-cancelled .appointment-status {
+    background: #374151;
+    color: #d1d5db;
+  }
+}
+
+@media (max-width: 640px) {
+  .appointment-row {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+}
